@@ -12,4 +12,5 @@
     <color name="rating_activated">#FDD835</color>
     <color name="rating_disable">#607D8B</color>
     <color name="colorDetailHeader">#E8EAF6</color>
+    <color name="taskListBlue">#3D5AFE</color>
 </resources>

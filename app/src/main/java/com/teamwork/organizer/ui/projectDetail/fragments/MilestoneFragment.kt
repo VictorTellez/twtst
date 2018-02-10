@@ -10,12 +10,23 @@ import android.view.View
 import android.view.ViewGroup
 
 import com.teamwork.organizer.R
+import com.teamwork.organizer.data.model.Project
 
 
 /**
  * Milestones.
  */
 class MilestoneFragment : Fragment() {
+    /**
+     * Gets a new instance of the fragment
+     */
+    fun newInstance(project: Project): MilestoneFragment {
+        val instance = MilestoneFragment()
+        val bundle = Bundle(1)
+        bundle.putSerializable(PROJECT, project)
+        instance.arguments = bundle
+        return instance
+    }
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,5 +43,8 @@ class MilestoneFragment : Fragment() {
         inflater!!.inflate(R.menu.menu_milestone_fragment, menu)
         super.onCreateOptionsMenu(menu, inflater)
     }
+    companion object {
+        val PROJECT = "PROJECT"
+    }
 
-}// Required empty public constructor
+}

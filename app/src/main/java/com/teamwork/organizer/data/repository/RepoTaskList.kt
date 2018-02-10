@@ -1,24 +1,32 @@
-package com.teamwork.organizer.ui.projectDetail.presenter
+package com.teamwork.organizer.data.repository
 
 import android.util.Log
 import com.teamwork.organizer.data.api.APIService
 import com.teamwork.organizer.data.api.ApiClient
 import com.teamwork.organizer.data.model.TaskLists
-import com.teamwork.organizer.data.model.TodoList
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 
 /**
- * This class loads a project and send it to the view.
+ * Repository to get the task lists.
  *
- * Created by Victor Tellez on 09/02/2018.
+ * Created by Victor Tellez on 10/02/2018.
  */
-class ProjectDetailPresenter(val view: IProjectDetailView) : IProjectDetailPresenter {
+class RepoTaskList {
+
     /**
-     * Loads a project by id.
+     * Callback to get the task list.
      */
-    override fun loadTasks(projectId: String) {
+    interface TaskListCallback {
+        fun successTaskList(list: TaskLists)
+        fun error()
+    }
+
+    /**
+     * Loads the task lists.
+     */
+    fun loadTaskLists(projectId: String, taskListCallback: TaskListCallback) {
 
         val mAPIService: APIService = ApiClient.apiServiceForTaskLists
         // RxJava
@@ -29,7 +37,7 @@ class ProjectDetailPresenter(val view: IProjectDetailView) : IProjectDetailPrese
 
                     override fun onError(e: Throwable) {
                         Log.e(TAG, "Rx error: " + e.message)
-                        view.showError()
+                        taskListCallback.error()
                     }
 
                     override fun onComplete() {
@@ -42,13 +50,12 @@ class ProjectDetailPresenter(val view: IProjectDetailView) : IProjectDetailPrese
 
                     override fun onNext(list: TaskLists) {
                         Log.d(TAG, "Rx onNext taskLists.size=${list.tasklists.size}")
-                        view.showTaskLists(list.tasklists)
+                        taskListCallback.successTaskList(list)
                     }
                 })
-
     }
 
     companion object {
-        private val TAG = ProjectDetailPresenter::class.java.simpleName
+        private val TAG = RepoTaskList::class.java.simpleName
     }
 }

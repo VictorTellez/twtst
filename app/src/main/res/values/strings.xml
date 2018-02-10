@@ -18,4 +18,5 @@
     <string name="starDate">Starts</string>
     <string name="endDate">End</string>
     <string name="lastChange">Last change</string>
+    <string name="error_loading_taskList">Error loading task list</string>
 </resources>

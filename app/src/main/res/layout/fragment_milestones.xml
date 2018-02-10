@@ -2,14 +2,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.teamwork.organizer.ui.projectDetail.fragments.MilestoneFragment">
+    tools:context="com.teamwork.organizer.ui.projectDetail.fragments.MilestoneFragment"
+    android:background="#ccc">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <ImageView
+        android:id="@+id/image"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/detail_tab_three"
-        android:layout_centerInParent="true"
-        android:textSize="30sp" />
+        android:layout_centerVertical="true"
+        android:src="@drawable/coming_soon"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"/>
 
 </RelativeLayout>

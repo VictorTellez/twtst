@@ -39,7 +39,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     }
 
     private fun loadProjects() {
-        progress_bar.visibility = View.VISIBLE
+        progressBar.visibility = View.VISIBLE
         recyclerView.visibility = View.GONE
         presenter.loadProjects()
     }
@@ -88,14 +88,14 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     }
 
     override fun showProjects(projects: List<Project>) {
-        progress_bar.visibility = View.GONE
+        progressBar.visibility = View.GONE
         recyclerView.visibility = View.VISIBLE
         adapter = RecyclerAdapter(projects, this)
         recyclerView.adapter = adapter
     }
 
     override fun showError() {
-        progress_bar.visibility = View.GONE
+        progressBar.visibility = View.GONE
         longToast(R.string.error_loading_projects)
     }
 

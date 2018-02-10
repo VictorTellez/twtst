@@ -47,7 +47,7 @@ class OverviewFragment : Fragment() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {
-        inflater!!.inflate(R.menu.menu_overview_fragment, menu)
+        inflater?.inflate(R.menu.menu_overview_fragment, menu)
         super.onCreateOptionsMenu(menu, inflater)
     }
 
@@ -70,6 +70,18 @@ class OverviewFragment : Fragment() {
         company.text = project.company.name
         status.text = project.status.capitalize()
         description?.text = project.description
+        setRatingBar(starred, project)
+        dates.text = project.startDate.formatMonthYear() + " - " + project.endDate.formatMonthYear()
+        lastChange.text = project.lastChangedOn.formatMonthYear()
+
+        status.setTextColor(if (project.status == "active") getColor(resources, R.color.activeStatus, null)
+                            else getColor(resources, R.color.otherStatus, null))
+    }
+
+    /**
+     * Sets the style of the rating bar.
+     */
+    private fun setRatingBar(starred: RatingBar, project: Project) {
         starred.rating = if (project.starred) 1.0f else 0.0f
         val drawable = starred.progressDrawable
         if (project.starred) {
@@ -77,11 +89,6 @@ class OverviewFragment : Fragment() {
         } else {
             drawable.setColorFilter(getColor(resources, R.color.rating_disable, null), PorterDuff.Mode.SRC_ATOP)
         }
-        dates.text = project.startDate.formatMonthYear() + " - " + project.endDate.formatMonthYear()
-        lastChange.text = project.lastChangedOn.formatMonthYear()
-
-        status.setTextColor(if (project.status == "active") getColor(resources, R.color.activeStatus, null)
-        else getColor(resources, R.color.otherStatus, null))
     }
 
     companion object {

@@ -45,7 +45,7 @@ class RecyclerAdapter(private val projects: List<Project>, var clickListener : V
         fun bindProject(project: Project) {
             Picasso.with(itemView.context).load(project.logo).into(itemView.image)
             itemView.name.text = project.name
-            itemView.description.text = project.description
+            itemView.uncompleted.text = project.description
         }
     }
 }
