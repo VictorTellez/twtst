@@ -1,5 +1,6 @@
 package com.teamwork.organizer.data.api;
 
+import com.teamwork.organizer.data.model.Project;
 import com.teamwork.organizer.data.model.ProjectsList;
 import io.reactivex.Observable;
 import retrofit2.http.GET;
@@ -19,10 +20,10 @@ public interface APIService {
     Observable<ProjectsList> readProjects();
 
     /**
-     * Get a project by ids.
+     * Get a project by id.
      * @param project_id id
      * @return project
      */
     @GET("projects/{project_id}.json")
-    Observable<ProjectsList> project(@Path(value = "project_id", encoded = true) int project_id);
+    Observable<Project> readProject(@Path(value = "project_id", encoded = true) int project_id);
 }

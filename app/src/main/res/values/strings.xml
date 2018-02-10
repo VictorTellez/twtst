@@ -1,9 +1,16 @@
 <resources>
     <string name="app_name">Projects</string>
-
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-
     <string name="navigation_projects">Projects</string>
     <string name="error_loading_projects">Error loading projects</string>
+    <string name="detail_tab_one">Overview</string>
+    <string name="detail_tab_two">Tasks</string>
+    <string name="detail_tab_three">Milestones</string>
+    <string name="action_overview">Overview</string>
+    <string name="action_activity">Activity</string>
+    <string name="action_new_task">New task</string>
+    <string name="action_task">Tasks</string>
+    <string name="action_milestones">Milestones</string>
+    <string name="action_add_milestone">Add milestone</string>
 </resources>

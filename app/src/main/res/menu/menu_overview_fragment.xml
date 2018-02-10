@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:id="@+id/action_overview"
+        android:title="@string/action_overview"
+        android:icon="@drawable/ic_overview"
+        app:showAsAction="always"/>
+    <item android:id="@+id/action_clear_log"
+        android:title="@string/action_activity"
+        app:showAsAction="never"/>
+</menu>
