@@ -20,7 +20,7 @@ class MainPresenter(val view: IMainView) : IMainPresenter {
      * Loads the projects and send them to the view.
      */
     override fun loadProjects() {
-        val mAPIService: APIService = ApiClient.getApiService()
+        val mAPIService: APIService = ApiClient.apiService
         // RxJava
         mAPIService.readProjects()
                 .subscribeOn(Schedulers.io())

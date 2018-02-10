@@ -102,7 +102,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     override fun onClick(view: View?) {
         val intent = Intent(this, ProjectDetailActivity::class.java)
         val holder = view?.tag as RecyclerAdapter.ProjectHolder
-        intent.putExtra(ProjectDetailActivity.PROJECT, adapter?.getProject(holder.adapterPosition))
+        intent.putExtra(ProjectDetailActivity.PROJECT, adapter.getProject(holder.adapterPosition))
         startActivity(intent)
     }
 

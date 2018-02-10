@@ -13,4 +13,9 @@
     <string name="action_task">Tasks</string>
     <string name="action_milestones">Milestones</string>
     <string name="action_add_milestone">Add milestone</string>
+    <string name="description">Description</string>
+    <string name="dates">Dates</string>
+    <string name="starDate">Starts</string>
+    <string name="endDate">End</string>
+    <string name="lastChange">Last change</string>
 </resources>

@@ -3,6 +3,7 @@ package com.teamwork.organizer.data.model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * Created by Victor Tellez on 09/02/2018.
@@ -45,7 +46,7 @@ public class Project implements Serializable {
     private String startPage;
     @SerializedName("startDate")
     @Expose
-    private String startDate;
+    private Date startDate;
     @SerializedName("logo")
     @Expose
     private String logo;
@@ -57,10 +58,10 @@ public class Project implements Serializable {
     private String id;
     @SerializedName("last-changed-on")
     @Expose
-    private String lastChangedOn;
+    private Date lastChangedOn;
     @SerializedName("endDate")
     @Expose
-    private String endDate;
+    private Date endDate;
     @SerializedName("harvest-timers-enabled")
     @Expose
     private String harvestTimersEnabled;
@@ -153,11 +154,11 @@ public class Project implements Serializable {
         this.startPage = startPage;
     }
 
-    public String getStartDate() {
+    public Date getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(String startDate) {
+    public void setStartDate(Date startDate) {
         this.startDate = startDate;
     }
 
@@ -185,19 +186,19 @@ public class Project implements Serializable {
         this.id = id;
     }
 
-    public String getLastChangedOn() {
+    public Date getLastChangedOn() {
         return lastChangedOn;
     }
 
-    public void setLastChangedOn(String lastChangedOn) {
+    public void setLastChangedOn(Date lastChangedOn) {
         this.lastChangedOn = lastChangedOn;
     }
 
-    public String getEndDate() {
+    public Date getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(String endDate) {
+    public void setEndDate(Date endDate) {
         this.endDate = endDate;
     }
 

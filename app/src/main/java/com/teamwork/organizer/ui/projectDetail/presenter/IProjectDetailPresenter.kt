@@ -9,5 +9,5 @@ interface IProjectDetailPresenter {
     /**
      * Loads the project by id.
      */
-    fun loadProject(projectId: String)
+    fun loadTasks(projectId: String)
 }

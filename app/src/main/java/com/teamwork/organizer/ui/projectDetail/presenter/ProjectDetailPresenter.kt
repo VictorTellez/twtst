@@ -3,7 +3,8 @@ package com.teamwork.organizer.ui.projectDetail.presenter
 import android.util.Log
 import com.teamwork.organizer.data.api.APIService
 import com.teamwork.organizer.data.api.ApiClient
-import com.teamwork.organizer.data.model.Project
+import com.teamwork.organizer.data.model.TaskLists
+import com.teamwork.organizer.data.model.TodoList
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
@@ -17,13 +18,14 @@ class ProjectDetailPresenter(val view: IProjectDetailView) : IProjectDetailPrese
     /**
      * Loads a project by id.
      */
-    override fun loadProject(projectId: String) {
-        val mAPIService: APIService = ApiClient.getApiServiceForProject()
+    override fun loadTasks(projectId: String) {
+
+        val mAPIService: APIService = ApiClient.apiServiceForTaskLists
         // RxJava
-        mAPIService.readProject(projectId.toInt())
+        mAPIService.readTaskLists(projectId.toInt())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(object : io.reactivex.Observer<Project> {
+                .subscribe(object : io.reactivex.Observer<TaskLists> {
 
                     override fun onError(e: Throwable) {
                         Log.e(TAG, "Rx error: " + e.message)
@@ -38,11 +40,12 @@ class ProjectDetailPresenter(val view: IProjectDetailView) : IProjectDetailPrese
                         Log.d(TAG, "Rx onSubscribe")
                     }
 
-                    override fun onNext(project: Project) {
-                        Log.d(TAG, "Rx onNext projectId=$projectId project=$project")
-                        view.showProject(project)
+                    override fun onNext(list: TaskLists) {
+                        Log.d(TAG, "Rx onNext taskLists.size=${list.tasklists.size}")
+                        view.showTaskLists(list.tasklists)
                     }
                 })
+
     }
 
     companion object {

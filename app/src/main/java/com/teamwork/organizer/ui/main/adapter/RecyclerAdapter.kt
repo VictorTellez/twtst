@@ -47,6 +47,5 @@ class RecyclerAdapter(private val projects: List<Project>, var clickListener : V
             itemView.name.text = project.name
             itemView.description.text = project.description
         }
-
     }
 }

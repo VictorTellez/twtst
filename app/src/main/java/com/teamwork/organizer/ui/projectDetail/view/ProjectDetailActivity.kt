@@ -12,11 +12,12 @@ import com.teamwork.organizer.ui.projectDetail.presenter.ProjectDetailPresenter
 import kotlinx.android.synthetic.main.activity_detail.*
 import android.support.design.widget.TabLayout
 import android.support.v4.view.ViewPager
+import com.teamwork.organizer.data.model.TaskLists
+import com.teamwork.organizer.data.model.TodoList
 import com.teamwork.organizer.ui.projectDetail.adapter.ViewPagerAdapter
 import com.teamwork.organizer.ui.projectDetail.fragments.OverviewFragment
 import com.teamwork.organizer.ui.projectDetail.fragments.TaskFragment
 import com.teamwork.organizer.ui.projectDetail.fragments.MilestoneFragment
-import kotlinx.android.synthetic.main.custom_tab.*
 
 
 /**
@@ -38,23 +39,22 @@ class ProjectDetailActivity : AppCompatActivity(), IProjectDetailView {
         getBundleData()
         configureViews()
         presenter = ProjectDetailPresenter(this)
-        loadProject()
+        loadProjectTasksAndMilestones()
     }
 
-    override fun showProject(project: Project) {
+    override fun showTaskLists(taskLists: List<TodoList>) {
 
     }
 
     override fun showError() {
     }
 
-
     private fun getBundleData() {
         project = intent.getSerializableExtra(PROJECT) as Project
     }
 
-    private fun loadProject() {
-        presenter.loadProject(project.id)
+    private fun loadProjectTasksAndMilestones() {
+        presenter.loadTasks(project.id)
     }
 
     /**
@@ -87,7 +87,7 @@ class ProjectDetailActivity : AppCompatActivity(), IProjectDetailView {
         val adapter = ViewPagerAdapter(supportFragmentManager)
 
         //TODO Pass data to fragments newInstance method
-        val callsFragment = OverviewFragment()
+        val callsFragment = OverviewFragment().newInstance(project)
         val chatFragment = TaskFragment()
         val contactsFragment = MilestoneFragment()
         adapter.addFragment(callsFragment, getString(R.string.detail_tab_one).toUpperCase())
