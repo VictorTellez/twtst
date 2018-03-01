@@ -14,6 +14,7 @@ import io.reactivex.schedulers.Schedulers
  */
 class RepoProjects {
 
+    var disposable: Disposable? = null
     /**
      * Callback to get the project list.
      */
@@ -50,6 +51,11 @@ class RepoProjects {
                         callback.successProjects(projects)
                     }
                 })
+
+    }
+
+    fun dispose() {
+        
     }
 
     companion object {

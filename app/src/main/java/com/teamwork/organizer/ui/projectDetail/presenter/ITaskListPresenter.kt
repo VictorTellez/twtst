@@ -10,4 +10,9 @@ interface ITaskListPresenter {
      * Loads the task list.
      */
     fun loadTasks(projectId: String)
+
+    /**
+     * Dispose the tasks data to avoid memory leaks
+     */
+    fun disposeTasks()
 }

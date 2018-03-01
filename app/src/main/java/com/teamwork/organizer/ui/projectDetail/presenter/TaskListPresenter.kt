@@ -25,4 +25,8 @@ class TaskListPresenter(val view: ITaskListView) : ITaskListPresenter,  RepoTask
     override fun error() {
         view.showError()
     }
+
+    override fun disposeTasks() {
+
+    }
 }

@@ -18,7 +18,6 @@ import com.teamwork.organizer.data.model.TodoList
 import com.teamwork.organizer.ui.projectDetail.adapter.TaskListRecyclerAdapter
 import com.teamwork.organizer.ui.projectDetail.presenter.ITaskListPresenter
 import com.teamwork.organizer.ui.projectDetail.presenter.TaskListPresenter
-import kotlinx.android.synthetic.main.content_main.*
 import org.jetbrains.anko.longToast
 
 /**
@@ -75,8 +74,8 @@ class TaskListFragment : Fragment(), ITaskListView, View.OnClickListener {
     override fun onClick(v: View?) {}
 
     private fun configureViews(view: View) {
-        progressBar =  view.findViewById<LinearLayout>(R.id.progressBarTaskList)
-        recyclerView =  view.findViewById<RecyclerView>(R.id.recyclerViewTaskList)
+        progressBar =  view.findViewById(R.id.progressBarTaskList)
+        recyclerView =  view.findViewById(R.id.recyclerViewTaskList)
         recyclerView.layoutManager = LinearLayoutManager(context)
         progressBar.visibility = View.VISIBLE
         recyclerView.visibility = View.GONE

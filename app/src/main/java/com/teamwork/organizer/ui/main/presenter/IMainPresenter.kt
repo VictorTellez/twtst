@@ -10,4 +10,9 @@ interface IMainPresenter {
      * Loads all the projects
      */
     fun loadProjects()
+
+    /**
+     * Dispose the projects data to avoid memory leaks
+     */
+    fun disposeProjects()
 }
