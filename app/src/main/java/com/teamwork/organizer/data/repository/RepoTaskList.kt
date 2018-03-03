@@ -19,7 +19,7 @@ class RepoTaskList {
      * Callback to get the task list.
      */
     interface TaskListCallback {
-        fun successTaskList(list: TaskLists)
+        fun successTaskLists(list: TaskLists)
         fun error()
     }
 
@@ -50,7 +50,7 @@ class RepoTaskList {
 
                     override fun onNext(list: TaskLists) {
                         Log.d(TAG, "Rx onNext taskLists.size=${list.tasklists.size}")
-                        taskListCallback.successTaskList(list)
+                        taskListCallback.successTaskLists(list)
                     }
                 })
     }

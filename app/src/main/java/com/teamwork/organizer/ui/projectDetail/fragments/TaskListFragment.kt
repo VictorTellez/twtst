@@ -59,6 +59,11 @@ class TaskListFragment : Fragment(), ITaskListView, View.OnClickListener {
         super.onCreateOptionsMenu(menu, inflater)
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        presenter.disposeTasks()
+    }
+
     override fun showTaskLists(taskLists: List<TodoList>) {
         progressBar.visibility = View.GONE
         recyclerView.visibility = View.VISIBLE
