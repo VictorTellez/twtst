@@ -14,7 +14,8 @@ import retrofit2.converter.gson.GsonConverterFactory
 object ApiClient {
 
     private val BASE_URL = "https://yat.teamwork.com/"
-    private val AUTH_TOKEN_ENCODED = "dHdwX1RFYkJYR0NudmwySGZ2WFdma0xVbHp4OTJlM1Q6"
+    //private val AUTH_TOKEN_ENCODED = "dHdwX1RFYkJYR0NudmwySGZ2WFdma0xVbHp4OTJlM1Q6"
+    private val AUTH_TOKEN_ENCODED = Base64Coder.encodeString( "twp_0wP7w7u8hog5lZMg3L8wBDMVCuxo")
 
     val apiService: APIService
         get() = ApiClient.getProjects(BASE_URL).create(APIService::class.java)

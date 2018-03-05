@@ -25,7 +25,8 @@ interface TeamWorksService {
 
     companion object {
         private val BASE_URL = "https://yat.teamwork.com/"
-        private val AUTH_TOKEN_ENCODED = "dHdwX1RFYkJYR0NudmwySGZ2WFdma0xVbHp4OTJlM1Q6"
+        //private val AUTH_TOKEN_ENCODED = "dHdwX1RFYkJYR0NudmwySGZ2WFdma0xVbHp4OTJlM1Q6"
+        private val AUTH_TOKEN_ENCODED = Base64Coder.encodeString( "twp_0wP7w7u8hog5lZMg3L8wBDMVCuxo")
 
         fun create(): TeamWorksService {
             val httpClient = OkHttpClient.Builder()
