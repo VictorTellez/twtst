@@ -1,4 +1,4 @@
-package com.teamwork.organizer.ui.projectDetail.view
+package com.teamwork.organizer.ui.projectdetail.view
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
@@ -9,10 +9,10 @@ import com.teamwork.organizer.data.model.Project
 import kotlinx.android.synthetic.main.activity_detail.*
 import android.support.design.widget.TabLayout
 import android.support.v4.view.ViewPager
-import com.teamwork.organizer.ui.projectDetail.adapter.ViewPagerAdapter
-import com.teamwork.organizer.ui.projectDetail.fragments.OverviewFragment
-import com.teamwork.organizer.ui.projectDetail.fragments.TaskListFragment
-import com.teamwork.organizer.ui.projectDetail.fragments.MilestoneFragment
+import com.teamwork.organizer.ui.projectdetail.adapter.ViewPagerAdapter
+import com.teamwork.organizer.ui.projectdetail.fragments.OverviewFragment
+import com.teamwork.organizer.ui.projectdetail.fragments.TaskListFragment
+import com.teamwork.organizer.ui.projectdetail.fragments.MilestoneFragment
 
 
 /**

@@ -11,10 +11,10 @@ import io.reactivex.schedulers.Schedulers
 /**
  * Created by Victor Tellez on 01/03/2018.
  */
-class TeamWorksProjectsRepo : IProjectsRepository {
+class TeamWorksTaskListRepo {
 
-    interface ProjectsCallback {
-        fun successProjects(projects: ProjectsList)
+    interface TaskListCallback {
+        fun successTaskLists(taskLists: TaskLists)
         fun error()
     }
 
@@ -24,23 +24,23 @@ class TeamWorksProjectsRepo : IProjectsRepository {
         TeamWorksService.create()
     }
 
-    override fun loadProjects(callback: ProjectsCallback) {
-        disposable = teamWorksApiServe.readProjects()
+    fun loadTaskList(callback: TaskListCallback, project_id: Int) {
+        disposable = teamWorksApiServe.readTaskLists(project_id)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribeWith(object : DisposableSingleObserver<ProjectsList>() {
+                .subscribeWith(object : DisposableSingleObserver<TaskLists>() {
                     override fun onError(e: Throwable) {
                         callback.error()
                     }
 
-                    override fun onSuccess(projects: ProjectsList) {
-                        callback.successProjects(projects)
+                    override fun onSuccess(taskList: TaskLists) {
+                        callback.successTaskLists(taskList)
                     }
                 }
                 )
     }
 
-    override fun dispose() {
+    fun dispose() {
         if (disposable != null && !disposable!!.isDisposed) {
             disposable?.dispose()
         }

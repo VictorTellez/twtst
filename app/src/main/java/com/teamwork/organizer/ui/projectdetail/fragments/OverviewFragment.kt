@@ -1,4 +1,4 @@
-package com.teamwork.organizer.ui.projectDetail.fragments
+package com.teamwork.organizer.ui.projectdetail.fragments
 
 
 import android.os.Bundle

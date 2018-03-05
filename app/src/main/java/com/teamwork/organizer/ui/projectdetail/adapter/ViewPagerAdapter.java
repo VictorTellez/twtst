@@ -1,4 +1,4 @@
-package com.teamwork.organizer.ui.projectDetail.adapter;
+package com.teamwork.organizer.ui.projectdetail.adapter;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;

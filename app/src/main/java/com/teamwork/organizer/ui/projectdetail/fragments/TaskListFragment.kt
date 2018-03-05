@@ -1,4 +1,4 @@
-package com.teamwork.organizer.ui.projectDetail.fragments
+package com.teamwork.organizer.ui.projectdetail.fragments
 
 
 import android.os.Bundle
@@ -15,9 +15,9 @@ import android.widget.LinearLayout
 import com.teamwork.organizer.R
 import com.teamwork.organizer.data.model.Project
 import com.teamwork.organizer.data.model.TodoList
-import com.teamwork.organizer.ui.projectDetail.adapter.TaskListRecyclerAdapter
-import com.teamwork.organizer.ui.projectDetail.presenter.ITaskListPresenter
-import com.teamwork.organizer.ui.projectDetail.presenter.TaskListPresenter
+import com.teamwork.organizer.ui.projectdetail.adapter.TaskListRecyclerAdapter
+import com.teamwork.organizer.ui.projectdetail.presenter.ITaskListPresenter
+import com.teamwork.organizer.ui.projectdetail.presenter.TaskListPresenter
 import org.jetbrains.anko.longToast
 
 /**

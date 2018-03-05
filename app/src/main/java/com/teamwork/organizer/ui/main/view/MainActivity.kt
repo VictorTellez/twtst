@@ -14,17 +14,11 @@ import android.view.View
 import android.widget.ImageView
 import com.squareup.picasso.Picasso
 import com.teamwork.organizer.R
-import com.teamwork.organizer.data.api.TeamWorksService
 import com.teamwork.organizer.data.model.Project
-import com.teamwork.organizer.data.model.ProjectsList
-import com.teamwork.organizer.data.repository.RepoProjects
 import com.teamwork.organizer.ui.main.adapter.RecyclerAdapter
 import com.teamwork.organizer.ui.main.presenter.IMainPresenter
 import com.teamwork.organizer.ui.main.presenter.MainPresenter
-import com.teamwork.organizer.ui.projectDetail.view.ProjectDetailActivity
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.disposables.Disposable
-import io.reactivex.schedulers.Schedulers
+import com.teamwork.organizer.ui.projectdetail.view.ProjectDetailActivity
 import kotlinx.android.synthetic.main.content_main.*
 import org.jetbrains.anko.longToast
 

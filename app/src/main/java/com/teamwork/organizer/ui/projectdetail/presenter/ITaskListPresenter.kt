@@ -1,4 +1,4 @@
-package com.teamwork.organizer.ui.projectDetail.presenter
+package com.teamwork.organizer.ui.projectdetail.presenter
 
 /**
  * Interface to communicate with the presenter from the view. Loads the task list.

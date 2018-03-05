@@ -1,4 +1,4 @@
-package com.teamwork.organizer.ui.projectDetail.fragments
+package com.teamwork.organizer.ui.projectdetail.fragments
 
 import com.teamwork.organizer.data.model.TodoList
 
