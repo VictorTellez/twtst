@@ -15,6 +15,7 @@ import android.widget.ImageView
 import com.squareup.picasso.Picasso
 import com.teamwork.organizer.R
 import com.teamwork.organizer.data.model.Project
+import com.teamwork.organizer.data.repository.ProjectsRepository
 import com.teamwork.organizer.ui.main.adapter.RecyclerAdapter
 import com.teamwork.organizer.ui.main.presenter.IMainPresenter
 import com.teamwork.organizer.ui.main.presenter.MainPresenter
@@ -34,7 +35,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         configureViews()
-        presenter = MainPresenter(this)
+        presenter = MainPresenter(this, ProjectsRepository())
         loadProjects()
     }
 

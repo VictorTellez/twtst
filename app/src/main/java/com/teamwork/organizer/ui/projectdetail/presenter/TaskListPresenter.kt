@@ -2,8 +2,8 @@ package com.teamwork.organizer.ui.projectdetail.presenter
 
 import com.teamwork.organizer.data.repository.RepoTaskList
 import com.teamwork.organizer.data.model.TaskLists
-import com.teamwork.organizer.data.repository.TeamWorksProjectsRepo
-import com.teamwork.organizer.data.repository.TeamWorksTaskListRepo
+import com.teamwork.organizer.data.repository.ProjectsRepository
+import com.teamwork.organizer.data.repository.TaskListRepository
 import com.teamwork.organizer.ui.projectdetail.fragments.ITaskListView
 
 /**
@@ -11,14 +11,14 @@ import com.teamwork.organizer.ui.projectdetail.fragments.ITaskListView
  *
  * Created by Victor Tellez on 09/02/2018.
  */
-class TaskListPresenter(val view: ITaskListView) : ITaskListPresenter,  RepoTaskList.TaskListCallback, TeamWorksTaskListRepo.TaskListCallback {
+class TaskListPresenter(val view: ITaskListView) : ITaskListPresenter,  RepoTaskList.TaskListCallback, TaskListRepository.TaskListCallback {
 
     /**
      * Loads list tasks
      */
     override fun loadTasks(projectId: String) {
         //RepoTaskList().loadTaskLists(projectId, this)
-        TeamWorksTaskListRepo().loadTaskList(this, projectId.toInt())
+        TaskListRepository().loadTaskList(this, projectId.toInt())
     }
 
     override fun successTaskLists(list: TaskLists) {
@@ -30,6 +30,6 @@ class TaskListPresenter(val view: ITaskListView) : ITaskListPresenter,  RepoTask
     }
 
     override fun disposeTasks() {
-        TeamWorksProjectsRepo().dispose()
+        ProjectsRepository().dispose()
     }
 }

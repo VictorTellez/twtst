@@ -2,7 +2,7 @@ package com.teamwork.organizer.ui.main.presenter
 
 import com.teamwork.organizer.data.model.Project
 import com.teamwork.organizer.data.repository.IProjectsRepository
-import com.teamwork.organizer.data.repository.TeamWorksProjectsRepo
+import com.teamwork.organizer.data.repository.ProjectsRepository
 import com.teamwork.organizer.ui.main.view.IMainView
 import org.junit.Assert
 import org.junit.Test
@@ -24,7 +24,7 @@ class MainPresenterTest {
         val view: IMainView = MockView()
 
         // when
-        val presenter: MainPresenter = MainPresenter(view)
+        val presenter: MainPresenter = MainPresenter(view, ProjectsRepository())
         presenter.loadProjects()
 
         // then
@@ -42,7 +42,7 @@ class MainPresenterTest {
     }
 
     private class MockProjectsRepository : IProjectsRepository {
-        override fun loadProjects(callback: TeamWorksProjectsRepo.ProjectsCallback) {
+        override fun loadProjects(callback: ProjectsRepository.ProjectsCallback) {
         }
 
         override fun dispose() {
