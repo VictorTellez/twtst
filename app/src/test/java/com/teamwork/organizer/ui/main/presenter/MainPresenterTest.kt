@@ -13,11 +13,6 @@ import org.junit.Test
 class MainPresenterTest {
 
     @Test
-    fun shouldPass() {
-        Assert.assertEquals(1, 1)
-    }
-
-    @Test
     fun shouldPassBooksToView() {
 
         // given
