@@ -1,46 +1,71 @@
 package com.teamwork.organizer.ui.main.presenter
 
 import com.teamwork.organizer.data.model.Project
+import com.teamwork.organizer.data.model.ProjectsList
 import com.teamwork.organizer.data.repository.IProjectsRepository
-import com.teamwork.organizer.data.repository.ProjectsRepository
 import com.teamwork.organizer.ui.main.view.IMainView
-import org.junit.Assert
+import io.reactivex.Single
+import org.junit.Before
+import org.junit.Rule
 import org.junit.Test
+import org.mockito.Mock
+import org.mockito.Mockito
+import org.mockito.junit.MockitoJUnit
+import io.reactivex.schedulers.Schedulers
+import io.reactivex.android.plugins.RxAndroidPlugins
+import org.junit.runner.RunWith
+import org.mockito.Mockito.doThrow
+import org.mockito.Mockito.verify
+import org.mockito.junit.MockitoJUnitRunner
 
 /**
  * Created by victor on 05/03/2018.
  */
+//@RunWith(MockitoJUnitRunner::class)
 class MainPresenterTest {
 
+    @Rule @JvmField
+    var mockitoRule = MockitoJUnit.rule()
+
+    @Mock
+    private lateinit var view: IMainView
+
+    @Mock
+    private lateinit var repository: IProjectsRepository
+
+    private lateinit var presenter: MainPresenter
+
+    @Before
+    fun setUp() {
+        RxAndroidPlugins.setInitMainThreadSchedulerHandler { scheduler -> Schedulers.trampoline() }
+        presenter = MainPresenter(view, repository)
+    }
+
     @Test
-    fun shouldPassBooksToView() {
-
-        // given
-        val view: IMainView = MockView()
-
-        // when
-        val presenter: MainPresenter = MainPresenter(view, ProjectsRepository())
+    fun shouldPassProjectsListToView() {
+        val PROJECT_LIST: ProjectsList = ProjectsList(listOf(Project(), Project(), Project()))
+        Mockito.`when`(repository.loadProjects()).thenReturn(Single.just(PROJECT_LIST))
         presenter.loadProjects()
-
-        // then
-        view.showProjects(listOf())
+        //view.showProjects(PROJECT_LIST.projects)
+        verify(view).showProjects(PROJECT_LIST.projects)
     }
 
-    private class MockView : IMainView {
-        var passed = false
-        override fun showProjects(projects: List<Project>) {
-            passed = true
-        }
-
-        override fun showError() {
-        }
+    @Test
+    fun shouldPassEmptyListToView() {
+        Mockito.`when`(repository.loadProjects()).thenReturn(Single.just(EMPTY))
+        presenter.loadProjects()
+        verify(view).showProjects(EMPTY.projects)
     }
 
-    private class MockProjectsRepository : IProjectsRepository {
-        override fun loadProjects(callback: ProjectsRepository.ProjectsCallback) {
-        }
+    /*@Test
+    fun shouldHandleError() {
+        Mockito.`when`(repository.loadProjects()).thenReturn(Single.error(Throwable("boom")))
+        presenter.loadProjects()
+        verify(view).showError()
+    }*/
 
-        override fun dispose() {
-        }
+    companion object {
+        private val EMPTY: ProjectsList = ProjectsList(emptyList())
     }
+
 }

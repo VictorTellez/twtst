@@ -10,6 +10,9 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
 import retrofit2.http.Path
+import okhttp3.logging.HttpLoggingInterceptor
+
+
 
 /**
  * Created by Victor Tellez on 28/02/2018.
@@ -29,8 +32,12 @@ interface TeamWorksService {
         private val AUTH_TOKEN_ENCODED = Base64Coder.encodeString( "twp_0wP7w7u8hog5lZMg3L8wBDMVCuxo")
 
         fun create(): TeamWorksService {
+            val logginInterceptor = HttpLoggingInterceptor()
+            logginInterceptor.level = HttpLoggingInterceptor.Level.BODY
+
             val httpClient = OkHttpClient.Builder()
             httpClient.addInterceptor(AuthInterceptor(AUTH_TOKEN_ENCODED))
+            httpClient.addInterceptor(logginInterceptor)
 
             val retrofit = Retrofit.Builder()
                     .client(httpClient.build())
